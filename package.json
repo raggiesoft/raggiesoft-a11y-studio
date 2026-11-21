@@ -1,0 +1,25 @@
+{
+  "name": "raggiesoft-a11y-studio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RaggieSoft Accessibility Studio commercial product portal (a11y.raggiesoft.com) — IBM Carbon Design System (@carbon/web-components + @carbon/styles) + TypeScript + Vite Static SSG",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite --port 4330",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build && node scripts/prerender.mjs",
+    "preview": "vite preview --port 4330"
+  },
+  "dependencies": {
+    "@carbon/styles": "^1.71.0",
+    "@carbon/web-components": "^2.22.0",
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "sass-embedded": "^1.83.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}

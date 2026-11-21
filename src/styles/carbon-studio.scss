@@ -1,0 +1,707 @@
+/**
+ * @license MIT
+ * ============================================================================
+ * src/styles/carbon-studio.scss — IBM Carbon Design System Theme & B2B Layout
+ * Property: https://a11y.raggiesoft.com (raggiesoft-a11y-studio)
+ * ============================================================================
+ * PLAIN-ENGLISH OVERVIEW (100-LEVEL IBM CARBON DESIGN TOKENS GUIDE):
+ *   What is this file?
+ *     Loads IBM Carbon's official design tokens (`@carbon/styles/scss/themes` and
+ *     `@carbon/styles/scss/theme`) so both our semantic HTML5 layout AND every
+ *     `@carbon/web-components` custom element (`<cds-tile>`, `<cds-tag>`,
+ *     `<cds-accordion>`, `<cds-accordion-item>`, `<cds-structured-list>`) share
+ *     Carbon's crisp `White`/`Gray-10` Light Mode and `Gray-90`/`Gray-100` Dark
+ *     Mode palette, `IBM Plex Sans` / `IBM Plex Mono` typography, and `4.5:1+`
+ *     WCAG 2.2 AA color contrast!
+ *
+ *   How Carbon Light & Dark Themes Switch Without FOUC:
+ *     - Default `:root` applies `themes.$white` (Carbon Light Mode).
+ *     - `@media (prefers-color-scheme: dark)` applies `themes.$g100` automatically
+ *       unless the user explicitly selected Light Mode (`[data-carbon-theme="white"]`).
+ *     - `[data-carbon-theme="g100"]` forces Carbon Gray-100 Dark Mode even when
+ *       the OS is in Light Mode!
+ * ============================================================================
+ */
+
+@use '@carbon/styles/scss/themes';
+@use '@carbon/styles/scss/theme';
+
+/* 1. Default IBM Carbon White Theme (Light Mode) */
+:root,
+:root[data-carbon-theme='white'] {
+  color-scheme: light;
+  @include theme.theme(themes.$white);
+  --cs-hero-bg: #f4f4f4;
+  --cs-surface-elevated: #ffffff;
+  --cs-code-bg: #161616;
+  --cs-code-fg: #f4f4f4;
+  --cs-diff-del: rgba(218, 30, 40, 0.16);
+  --cs-diff-add: rgba(36, 161, 72, 0.18);
+}
+
+/* 2. Automatic OS Dark Mode (`prefers-color-scheme: dark`) using Carbon Gray 100 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-carbon-theme='white']) {
+    color-scheme: dark;
+    @include theme.theme(themes.$g100);
+    --cs-hero-bg: #262626;
+    --cs-surface-elevated: #262626;
+    --cs-code-bg: #161616;
+    --cs-code-fg: #f4f4f4;
+    --cs-diff-del: rgba(255, 131, 137, 0.18);
+    --cs-diff-add: rgba(66, 190, 101, 0.18);
+  }
+}
+
+/* 3. Explicit User Override to Carbon Gray 100 Dark Mode */
+:root[data-carbon-theme='g100'] {
+  color-scheme: dark;
+  @include theme.theme(themes.$g100);
+  --cs-hero-bg: #262626;
+  --cs-surface-elevated: #262626;
+  --cs-code-bg: #161616;
+  --cs-code-fg: #f4f4f4;
+  --cs-diff-del: rgba(255, 131, 137, 0.18);
+  --cs-diff-add: rgba(66, 190, 101, 0.18);
+}
+
+/* 4. Base Reset & Typography */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cds-background, #ffffff);
+  color: var(--cds-text-primary, #161616);
+  font-family: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+code,
+pre,
+.cs-mono {
+  font-family: 'IBM Plex Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+/* 5. Keyboard Focus & Skip Link (WCAG 2.4.1 & 2.4.7 Level AA) */
+.cs-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--cds-interactive, #0f62fe);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.cs-skip-link:focus-visible {
+  left: 1rem;
+  outline: 3px solid currentColor;
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cds-focus, #0f62fe);
+  outline-offset: 2px;
+}
+
+/* 6. Carbon B2B Global Product Header (`48px` Carbon UI Shell convention) */
+.cs-shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: #161616;
+  color: #f4f4f4;
+  border-bottom: 1px solid #393939;
+}
+
+.cs-shell-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 3.25rem;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cs-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #f4f4f4;
+  text-decoration: none;
+  font-size: 0.96rem;
+  letter-spacing: 0.01em;
+}
+
+.cs-brand-prefix {
+  color: #c6c6c6;
+  font-weight: 400;
+}
+
+.cs-brand-product {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cs-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-wrap: wrap;
+}
+
+.cs-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3.25rem;
+  padding: 0 1rem;
+  color: #c6c6c6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 3px solid transparent;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+
+.cs-nav-link:hover {
+  background: #262626;
+  color: #ffffff;
+}
+
+.cs-nav-link[aria-current='page'] {
+  color: #ffffff;
+  font-weight: 600;
+  border-bottom-color: #0f62fe;
+  background: #262626;
+}
+
+.cs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cs-theme-btn {
+  appearance: none;
+  background: #262626;
+  color: #f4f4f4;
+  border: 1px solid #525252;
+  padding: 0.42rem 0.8rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.cs-theme-btn:hover {
+  background: #393939;
+}
+
+/* 7. Carbon 16-Column Inspired Container, Hero, & Section Rhythm */
+.cs-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.cs-hero {
+  background: var(--cs-hero-bg);
+  border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+  padding: 3.5rem 0 3.75rem;
+}
+
+.cs-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .cs-hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cds-link-primary, #0f62fe);
+  margin-bottom: 0.75rem;
+}
+
+.cs-hero h1,
+.cs-page-header h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 3.3vw, 2.85rem);
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+
+.cs-hero h1 strong,
+.cs-page-header h1 strong {
+  font-weight: 600;
+}
+
+.cs-lead {
+  font-size: 1.08rem;
+  color: var(--cds-text-secondary, #525252);
+  margin: 0 0 1.65rem;
+  max-width: 64ch;
+}
+
+/* Carbon Expressive / Productive Rectangular Action Buttons (`border-radius: 0`) */
+.cs-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.cs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 3rem;
+  padding: 0.7rem 1.25rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.14s ease, border-color 0.14s ease;
+}
+
+.cs-btn-primary {
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.cs-btn-primary:hover {
+  background: #0353e9;
+}
+
+.cs-btn-secondary {
+  background: #393939;
+  color: #ffffff;
+}
+
+.cs-btn-secondary:hover {
+  background: #4c4c4c;
+}
+
+.cs-btn-ghost {
+  background: transparent;
+  color: var(--cds-link-primary, #0f62fe);
+  border-color: var(--cds-border-strong-01, #8d8d8d);
+}
+
+.cs-btn-ghost:hover {
+  background: var(--cds-layer-hover-01, rgba(141, 141, 141, 0.12));
+}
+
+/* 8. Realistic Enterprise Workstation IDE Mockup Window */
+.cs-ide-frame {
+  background: #161616;
+  color: #f4f4f4;
+  border: 1px solid #525252;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.cs-ide-titlebar {
+  background: #262626;
+  border-bottom: 1px solid #393939;
+  padding: 0.55rem 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #c6c6c6;
+}
+
+.cs-ide-toolbar {
+  background: #1f1f1f;
+  border-bottom: 1px solid #393939;
+  padding: 0.45rem 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.76rem;
+}
+
+.cs-ide-pill {
+  background: #393939;
+  color: #f4f4f4;
+  padding: 0.18rem 0.55rem;
+}
+
+.cs-ide-pill--blue {
+  background: #0f62fe;
+  color: #ffffff;
+}
+
+.cs-ide-diff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #393939;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 640px) {
+  .cs-ide-diff {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-ide-pane {
+  padding: 0.85rem 0.95rem;
+  overflow-x: auto;
+  border-right: 1px solid #393939;
+}
+
+.cs-ide-pane-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #a8a8a8;
+  margin-bottom: 0.45rem;
+}
+
+.cs-line-del {
+  background: rgba(250, 77, 86, 0.22);
+  color: #ffb3b8;
+  display: block;
+  padding: 0.1rem 0.35rem;
+}
+
+.cs-line-add {
+  background: rgba(66, 190, 101, 0.22);
+  color: #a7f0ba;
+  display: block;
+  padding: 0.1rem 0.35rem;
+}
+
+.cs-ide-errors {
+  padding: 0.7rem 0.95rem;
+  font-size: 0.76rem;
+  background: #161616;
+}
+
+.cs-ide-error-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #262626;
+}
+
+/* 9. Sections, Carbon Tiles (`<cds-tile>`), KPI Strip, & Structured Tables */
+.cs-section {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+}
+
+.cs-page-header {
+  background: var(--cs-hero-bg);
+  border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+  padding: 2.75rem 0;
+}
+
+.cs-section-head {
+  margin-bottom: 2rem;
+  max-width: 72ch;
+}
+
+.cs-section-head h2 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  font-weight: 400;
+}
+
+.cs-section-head p {
+  margin: 0;
+  color: var(--cds-text-secondary, #525252);
+}
+
+.cs-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--cds-border-subtle-01, #e0e0e0);
+  border: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+}
+
+@media (max-width: 900px) {
+  .cs-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .cs-kpi-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-kpi-cell {
+  background: var(--cs-surface-elevated);
+  padding: 1.5rem;
+}
+
+.cs-kpi-number {
+  display: block;
+  font-size: 2.15rem;
+  font-weight: 300;
+  color: var(--cds-link-primary, #0f62fe);
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+.cs-kpi-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.cs-kpi-note {
+  font-size: 0.82rem;
+  color: var(--cds-text-secondary, #525252);
+}
+
+.cs-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.cs-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 960px) {
+  .cs-grid-3,
+  .cs-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Progressive styling for `<cds-tile>` both before & after Custom Element upgrade */
+cds-tile.cs-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cs-surface-elevated);
+  border: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+  padding: 1.5rem;
+  min-height: 100%;
+}
+
+cds-tile.cs-tile h3 {
+  margin: 0.5rem 0 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+cds-tile.cs-tile p {
+  margin: 0 0 0.85rem;
+  color: var(--cds-text-secondary, #525252);
+  font-size: 0.94rem;
+}
+
+.cs-tag-badge {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.18rem 0.6rem;
+  background: rgba(15, 98, 254, 0.14);
+  color: var(--cds-link-primary, #0f62fe);
+}
+
+.cs-list {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.cs-list li {
+  margin-bottom: 0.35rem;
+}
+
+/* 10. Accessible Scrollable Enterprise Data Tables (`modern-web-guidance` responsive-table) */
+.cs-table-region {
+  overflow-x: auto;
+  border: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+  background: var(--cs-surface-elevated);
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.cs-table caption {
+  text-align: left;
+  padding: 0.95rem 1.15rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+}
+
+.cs-table th,
+.cs-table td {
+  text-align: left;
+  padding: 0.75rem 1.15rem;
+  border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+  vertical-align: top;
+}
+
+.cs-table thead th {
+  background: var(--cs-hero-bg);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 11. Interactive Rule Filter Bar & Terminal Code Blocks */
+.cs-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.cs-search-input {
+  min-height: 2.5rem;
+  min-width: 260px;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--cds-border-strong-01, #8d8d8d);
+  background: var(--cs-surface-elevated);
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.92rem;
+}
+
+.cs-filter-chip {
+  appearance: none;
+  border: 1px solid var(--cds-border-strong-01, #8d8d8d);
+  background: transparent;
+  color: inherit;
+  padding: 0.42rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.84rem;
+  cursor: pointer;
+}
+
+.cs-filter-chip[aria-pressed='true'] {
+  background: #0f62fe;
+  border-color: #0f62fe;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cs-code-block {
+  background: var(--cs-code-bg);
+  color: var(--cs-code-fg);
+  border: 1px solid #393939;
+  padding: 1.15rem 1.25rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 0.75rem 0 0;
+}
+
+/* 12. Enterprise Footer & Mandatory Fictitious Entities Disclaimer */
+.cs-footer {
+  background: #161616;
+  color: #c6c6c6;
+  padding: 3rem 0 2.5rem;
+  font-size: 0.88rem;
+}
+
+.cs-footer a {
+  color: #78a9ff;
+  text-decoration: none;
+}
+
+.cs-footer a:hover {
+  text-decoration: underline;
+}
+
+.cs-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #393939;
+}
+
+@media (max-width: 820px) {
+  .cs-footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-footer h2,
+.cs-footer h3 {
+  color: #ffffff;
+  font-size: 0.95rem;
+  margin: 0 0 0.75rem;
+}
+
+.cs-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cs-footer li {
+  margin-bottom: 0.45rem;
+}
+
+.cs-disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: #a8a8a8;
+  line-height: 1.55;
+}
+
+/* 13. Vestibular Motion Safety (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
