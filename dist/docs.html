@@ -40,7 +40,7 @@
       gtag('js', new Date());
       gtag('config', 'G-P9RG9JVYB6');
     </script>
-    <script type="module" crossorigin src="/assets/index-zs1pSqjE.js"></script>
+    <script type="module" crossorigin src="/assets/index-C7FcVvw6.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BFLEhWaR.css">
   </head>
   <body>
@@ -211,7 +211,7 @@
         </thead>
         <tbody>
           
-            <tr>
+            <tr id="rule-WCAG-HTML-LANG">
               <th scope="row"><code class="cs-mono">WCAG-HTML-LANG</code></th>
               <td><strong>Serious</strong></td>
               <td>3.1.1 Language of Page (A)<br /><small>Revised 508 E205.4</small></td>
@@ -219,7 +219,7 @@
               <td>Detects missing, empty, or malformed BCP 47 `lang` attributes on the root `&lt;html&gt;` element so screen readers load the right pronunciation rules.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-HTML-TITLE">
               <th scope="row"><code class="cs-mono">WCAG-HTML-TITLE</code></th>
               <td><strong>Serious</strong></td>
               <td>2.4.2 Page Titled (A)<br /><small>Revised 508 E205.4</small></td>
@@ -227,7 +227,7 @@
               <td>Flags HTML documents missing a non-empty `&lt;title&gt;` element announced first when users switch browser tabs or windows.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-LANDMARK-MAIN">
               <th scope="row"><code class="cs-mono">WCAG-LANDMARK-MAIN</code></th>
               <td><strong>Moderate</strong></td>
               <td>1.3.1 / 2.4.1 Bypass Blocks (A)<br /><small>Revised 508 E205.4</small></td>
@@ -235,7 +235,7 @@
               <td>Verifies full HTML5 documents expose a primary `&lt;main&gt;` landmark so assistive technology users can jump straight past repeated chrome.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-LANDMARK-DUP-NAV">
               <th scope="row"><code class="cs-mono">WCAG-LANDMARK-DUP-NAV</code></th>
               <td><strong>Moderate</strong></td>
               <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
@@ -243,7 +243,7 @@
               <td>Detects multiple `&lt;nav&gt;` regions on the same page that lack distinct `aria-label` or `aria-labelledby` names.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-HEADING-SKIP">
               <th scope="row"><code class="cs-mono">WCAG-HEADING-SKIP</code></th>
               <td><strong>Moderate</strong></td>
               <td>1.3.1 / 2.4.6 Headings &amp; Labels (AA)<br /><small>Revised 508 E205.4</small></td>
@@ -251,7 +251,7 @@
               <td>Flags skipped heading ranks (such as jumping from `&lt;h1&gt;` directly to `&lt;h4&gt;`) and empty heading elements.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-TABLE-FAKE-HEADER">
               <th scope="row"><code class="cs-mono">WCAG-TABLE-FAKE-HEADER</code></th>
               <td><strong>Serious</strong></td>
               <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
@@ -259,7 +259,7 @@
               <td>Catches data tables whose first row uses visual bolding (`&lt;td&gt;&lt;strong&gt;` or `font-weight: bold`) instead of programmatic `&lt;th&gt;` headers.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-TABLE-TH-SCOPE">
               <th scope="row"><code class="cs-mono">WCAG-TABLE-TH-SCOPE</code></th>
               <td><strong>Moderate</strong></td>
               <td>1.3.1 Info &amp; Relationships (A)<br /><small>Revised 508 E205.4</small></td>
@@ -267,7 +267,7 @@
               <td>Ensures `&lt;th&gt;` header cells declare explicit `scope=&quot;col&quot;` or `scope=&quot;row&quot;` attributes for unambiguous cell announcements.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-IMG-MISSING-ALT">
               <th scope="row"><code class="cs-mono">WCAG-IMG-MISSING-ALT</code></th>
               <td><strong>Critical</strong></td>
               <td>1.1.1 Non-text Content (A)<br /><small>Revised 508 E205.4</small></td>
@@ -275,7 +275,7 @@
               <td>Flags `&lt;img&gt;` tags missing `alt` attributes or containing raw camera/file-extension filenames (`IMG_4021.jpg`).</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-SVG-UNLABELED">
               <th scope="row"><code class="cs-mono">WCAG-SVG-UNLABELED</code></th>
               <td><strong>Serious</strong></td>
               <td>1.1.1 / 4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
@@ -283,7 +283,7 @@
               <td>Detects inline `&lt;svg&gt;` graphics that neither hide decorative vectors nor provide `role=&quot;img&quot;` with an accessible title.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-FORM-MISSING-LABEL">
               <th scope="row"><code class="cs-mono">WCAG-FORM-MISSING-LABEL</code></th>
               <td><strong>Critical</strong></td>
               <td>1.3.1 / 4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
@@ -291,7 +291,7 @@
               <td>Verifies `&lt;input&gt;`, `&lt;select&gt;`, and `&lt;textarea&gt;` controls have an associated `&lt;label for=&quot;...&quot;&gt;`, wrapping `&lt;label&gt;`, or ARIA label.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-INPUT-AUTOCOMPLETE">
               <th scope="row"><code class="cs-mono">WCAG-INPUT-AUTOCOMPLETE</code></th>
               <td><strong>Moderate</strong></td>
               <td>1.3.5 Identify Input Purpose (AA)<br /><small>Revised 508 E205.4</small></td>
@@ -299,7 +299,7 @@
               <td>Checks personal email and telephone inputs for WCAG 2.1/2.2 AA `autocomplete` tokens aiding users with cognitive or motor disabilities.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-LINK-GENERIC-TEXT">
               <th scope="row"><code class="cs-mono">WCAG-LINK-GENERIC-TEXT</code></th>
               <td><strong>Serious</strong></td>
               <td>2.4.4 Link Purpose in Context (A)<br /><small>Revised 508 E205.4</small></td>
@@ -307,7 +307,7 @@
               <td>Flags empty anchors (`&lt;a&gt;&lt;/a&gt;`) and ambiguous `&quot;click here&quot;` / `&quot;read more&quot;` links lacking descriptive accessible names.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-ARIA-HIDDEN-FOCUSABLE">
               <th scope="row"><code class="cs-mono">WCAG-ARIA-HIDDEN-FOCUSABLE</code></th>
               <td><strong>Critical</strong></td>
               <td>4.1.2 Name, Role, Value (A)<br /><small>Revised 508 E205.4</small></td>
@@ -315,7 +315,7 @@
               <td>Catches focusable `&lt;button&gt;`, `&lt;a&gt;`, or `&lt;input&gt;` controls marked `aria-hidden=&quot;true&quot;`, preventing &quot;ghost focus&quot; traps for screen readers.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-TABINDEX-POSITIVE">
               <th scope="row"><code class="cs-mono">WCAG-TABINDEX-POSITIVE</code></th>
               <td><strong>Serious</strong></td>
               <td>2.4.3 Focus Order (A)<br /><small>Revised 508 E205.4</small></td>
@@ -323,7 +323,7 @@
               <td>Flags positive `tabindex=&quot;1+&quot;` attributes that hijack natural DOM keyboard reading order.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-MEDIA-CAPTIONS">
               <th scope="row"><code class="cs-mono">WCAG-MEDIA-CAPTIONS</code></th>
               <td><strong>Critical</strong></td>
               <td>1.2.2 Captions Prerecorded (A)<br /><small>Revised 508 E205.4 / ADA Title II</small></td>
@@ -331,7 +331,7 @@
               <td>Ensures HTML5 `&lt;video&gt;` players include synchronized WebVTT `&lt;track kind=&quot;captions&quot;&gt;` tracks and disables `autoplay` audio.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-CSS-CONTRAST">
               <th scope="row"><code class="cs-mono">WCAG-CSS-CONTRAST</code></th>
               <td><strong>Serious</strong></td>
               <td>1.4.3 Contrast Minimum (AA)<br /><small>Revised 508 E205.4</small></td>
@@ -339,7 +339,7 @@
               <td>Evaluates CSS foreground/background pairs (including `:root` custom property tokens) against WCAG 2.2 4.5:1 AA relative luminance.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-CSS-FOCUS-SUPPRESSED">
               <th scope="row"><code class="cs-mono">WCAG-CSS-FOCUS-SUPPRESSED</code></th>
               <td><strong>Serious</strong></td>
               <td>2.4.7 Focus Visible (AA)<br /><small>Revised 508 E205.4</small></td>
@@ -347,7 +347,7 @@
               <td>Detects CSS rules setting `outline: none` or `outline: 0` without a visible high-contrast focus replacement.</td>
             </tr>
 
-            <tr>
+            <tr id="rule-WCAG-VTT-TIMING">
               <th scope="row"><code class="cs-mono">WCAG-VTT-TIMING</code></th>
               <td><strong>Serious</strong></td>
               <td>1.2.2 Captions Prerecorded (A)<br /><small>Revised 508 E205.4</small></td>

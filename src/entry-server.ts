@@ -98,7 +98,7 @@ export function renderRuleCatalogTableHtml(
           ${filtered
             .map(
               (r) => `
-            <tr>
+            <tr id="rule-${esc(r.ruleId)}">
               <th scope="row"><code class="cs-mono">${esc(r.ruleId)}</code></th>
               <td><strong>${esc(r.severity)}</strong></td>
               <td>${esc(r.wcag)}<br /><small>${esc(r.section508)}</small></td>

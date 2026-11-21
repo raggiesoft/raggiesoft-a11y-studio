@@ -342,7 +342,7 @@ This becomes the default behavior in v12. Enable it to migrate early, or enable 
         </thead>
         <tbody>
           ${i.map(o=>`
-            <tr>
+            <tr id="rule-${f(o.ruleId)}">
               <th scope="row"><code class="cs-mono">${f(o.ruleId)}</code></th>
               <td><strong>${f(o.severity)}</strong></td>
               <td>${f(o.wcag)}<br /><small>${f(o.section508)}</small></td>
