@@ -576,31 +576,54 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
           </span>
         </a>
 
-        <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
-          <ul class="cs-nav-list">
-            ${STUDIO_ROUTES.map(
-              (r) => `
-              <li>
-                <a
-                  href="${esc(r.path)}"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  ${r.path === normalizedPath ? 'aria-current="page"' : ''}
-                >${esc(r.navLabel)}</a>
-              </li>`
-            ).join('\n')}
-          </ul>
-        </nav>
+        <button
+          type="button"
+          class="rs-mobile-header-toggle cs-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open navigation and theme menu"
+          data-close-label="Close navigation and theme menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open navigation and theme menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
 
-        <div class="cs-header-actions">
-          <button
-            type="button"
-            id="cs-theme-toggle"
-            class="cs-theme-btn"
-            aria-label="Toggle Light or Dark color theme"
-          >
-            <span id="cs-theme-label">🌓 Theme</span>
-          </button>
+        <div id="header-navigation-panel" class="cs-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
+            <ul class="cs-nav-list">
+              ${STUDIO_ROUTES.map(
+                (r) => `
+                <li>
+                  <a
+                    href="${esc(r.path)}"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    ${r.path === normalizedPath ? 'aria-current="page"' : ''}
+                  >${esc(r.navLabel)}</a>
+                </li>`
+              ).join('\n')}
+            </ul>
+          </nav>
+
+          <div class="cs-header-actions">
+            <button
+              type="button"
+              id="cs-theme-toggle"
+              class="cs-theme-btn"
+              aria-label="Toggle Light or Dark color theme"
+            >
+              <span id="cs-theme-label">🌓 Theme</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>

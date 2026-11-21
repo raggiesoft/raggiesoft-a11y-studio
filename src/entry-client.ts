@@ -147,6 +147,8 @@ function navigateClient(targetPath: string, pushState: boolean): void {
   }
 
   bindRouteControls();
+  const win = window as unknown as { initRaggieSoftNetworkMenu?: () => void };
+  win.initRaggieSoftNetworkMenu?.();
   window.scrollTo({ top: 0, behavior: 'auto' });
 }
 

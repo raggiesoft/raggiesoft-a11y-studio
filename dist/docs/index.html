@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio." />
     <meta name="twitter:image" content="https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg" />
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","@id":"https://a11y.raggiesoft.com/#software","name":"RaggieSoft Accessibility Studio","url":"https://a11y.raggiesoft.com/","applicationCategory":"DeveloperApplication","operatingSystem":"Windows 11 (x64, ARM64)","softwareVersion":"1.0.0","license":"https://opensource.org/licenses/MIT","author":{"@type":"Person","@id":"https://michaelpragsdale.com/#michael-ragsdale","name":"Michael P. Ragsdale","url":"https://michaelpragsdale.com"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}},{"@type":"WebSite","@id":"https://a11y.raggiesoft.com/#website","url":"https://a11y.raggiesoft.com/","name":"RaggieSoft Accessibility Studio"},{"@type":"WebPage","@id":"https://a11y.raggiesoft.com/docs#webpage","url":"https://a11y.raggiesoft.com/docs","name":"Docs & Rule Catalog | RaggieSoft Accessibility Studio","description":"Browse built-in WCAG 2.2 AA and Revised Section 508 web rules, keyboard shortcuts, and CLI exit codes for RaggieSoft Accessibility Studio.","isPartOf":{"@id":"https://a11y.raggiesoft.com/#website"},"about":{"@id":"https://a11y.raggiesoft.com/#software"}}]}</script>
-    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121d" />
+    <link rel="stylesheet" href="https://assets.raggiesoft.com/common/css/raggiesoft-network.css?v=20261121e" />
     <!-- Google Analytics 4 (GA4) Telemetry Integration (G-P9RG9JVYB6) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P9RG9JVYB6"></script>
     <script>
@@ -40,8 +40,8 @@
       gtag('js', new Date());
       gtag('config', 'G-P9RG9JVYB6');
     </script>
-    <script type="module" crossorigin src="/assets/index-C8SMImzv.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CrJEsZYn.css">
+    <script type="module" crossorigin src="/assets/index-zs1pSqjE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BFLEhWaR.css">
   </head>
   <body>
     <a href="#main-content" class="cs-skip-link">Skip to main content</a>
@@ -73,65 +73,88 @@
           </span>
         </a>
 
-        <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
-          <ul class="cs-nav-list">
-            
-              <li>
-                <a
-                  href="/"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  
-                >Overview</a>
-              </li>
+        <button
+          type="button"
+          class="rs-mobile-header-toggle cs-mobile-toggle"
+          data-rs-mobile-toggle
+          data-open-label="Open navigation and theme menu"
+          data-close-label="Close navigation and theme menu"
+          aria-expanded="false"
+          aria-controls="header-navigation-panel"
+          aria-label="Open navigation and theme menu"
+        >
+          <svg class="rs-icon-bars" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="rs-icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" aria-hidden="true" focusable="false">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
 
-              <li>
-                <a
-                  href="/features"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  
-                >IDE &amp; Refactoring</a>
-              </li>
+        <div id="header-navigation-panel" class="cs-nav-panel" data-rs-collapsible="true">
+          <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
+            <ul class="cs-nav-list">
+              
+                <li>
+                  <a
+                    href="/"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Overview</a>
+                </li>
 
-              <li>
-                <a
-                  href="/enterprise"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  
-                >Enterprise MSI &amp; CLI</a>
-              </li>
+                <li>
+                  <a
+                    href="/features"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >IDE &amp; Refactoring</a>
+                </li>
 
-              <li>
-                <a
-                  href="/reports"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  
-                >Reports &amp; Audit Logs</a>
-              </li>
+                <li>
+                  <a
+                    href="/enterprise"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Enterprise MSI &amp; CLI</a>
+                </li>
 
-              <li>
-                <a
-                  href="/docs"
-                  data-local-nav="true"
-                  class="cs-nav-link"
-                  aria-current="page"
-                >Documentation &amp; Rules</a>
-              </li>
-          </ul>
-        </nav>
+                <li>
+                  <a
+                    href="/reports"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    
+                  >Reports &amp; Audit Logs</a>
+                </li>
 
-        <div class="cs-header-actions">
-          <button
-            type="button"
-            id="cs-theme-toggle"
-            class="cs-theme-btn"
-            aria-label="Toggle Light or Dark color theme"
-          >
-            <span id="cs-theme-label">🌓 Theme</span>
-          </button>
+                <li>
+                  <a
+                    href="/docs"
+                    data-local-nav="true"
+                    class="cs-nav-link"
+                    aria-current="page"
+                  >Documentation &amp; Rules</a>
+                </li>
+            </ul>
+          </nav>
+
+          <div class="cs-header-actions">
+            <button
+              type="button"
+              id="cs-theme-toggle"
+              class="cs-theme-btn"
+              aria-label="Toggle Light or Dark color theme"
+            >
+              <span id="cs-theme-label">🌓 Theme</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -421,6 +444,6 @@
       </div>
     </footer></div>
 
-    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121d" defer></script>
+    <script src="https://assets.raggiesoft.com/common/js/raggiesoft-network.js?v=20261121e" defer></script>
   </body>
 </html>
