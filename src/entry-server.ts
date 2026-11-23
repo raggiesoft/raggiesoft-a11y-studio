@@ -312,14 +312,15 @@ function renderEnterprisePage(): string {
     <section class="cs-section" aria-labelledby="msi-heading">
       <div class="cs-container">
         <div class="cs-section-head">
-          <h2 id="msi-heading">Silent Windows Installer (<code>.MSI</code>) &amp; Group Policy Properties</h2>
+          <h2 id="msi-heading">Silent Enterprise Setup (<code>/s</code>) &amp; Group Policy Properties</h2>
           <p>
-            Deploy unattended through Microsoft Intune, Endpoint Configuration Manager (SCCM), or Active Directory GPO
-            with zero user prompts and deterministic Windows Registry policy defaults.
+            Deploy the universal <code>x64</code> + <code>ARM64</code> offline setup executable unattended through
+            Microsoft Intune, Endpoint Configuration Manager (SCCM), or <code>winget</code> with zero user prompts
+            and deterministic Windows Registry policy defaults.
           </p>
         </div>
 
-        <pre class="cs-code-block"><code>msiexec /i raggiesoft-accessibility-studio-setup.msi /qn ^
+        <pre class="cs-code-block"><code>raggiesoft-accessibility-studio-setup.exe /s ^
   COMPLIANCE_PROFILE="AdaTitleIIWeb" ^
   BATCH_THROTTLE_MS="1500" ^
   DISABLE_TELEMETRY="1" ^

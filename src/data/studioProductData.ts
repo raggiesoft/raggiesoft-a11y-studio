@@ -114,8 +114,8 @@ export const HERO_KPIS = [
   },
   {
     number: 'x64 + ARM64',
-    label: 'Windows 11 Enterprise MSI & CLI',
-    note: 'Silent msiexec deployment, Explorer folder verbs, and headless CI/CD exit-code gates.'
+    label: 'Windows 11 Silent Setup & CLI',
+    note: 'Universal single-EXE /s silent deployment, Explorer folder verbs, and headless CI/CD exit-code gates.'
   }
 ] as const;
 
