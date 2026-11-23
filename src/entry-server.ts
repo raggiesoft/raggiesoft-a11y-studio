@@ -319,7 +319,7 @@ function renderEnterprisePage(): string {
           </p>
         </div>
 
-        <pre class="cs-code-block"><code>msiexec /i RaggieSoftAccessibilityStudio-x64.msi /qn ^
+        <pre class="cs-code-block"><code>msiexec /i raggiesoft-accessibility-studio-setup.msi /qn ^
   COMPLIANCE_PROFILE="AdaTitleIIWeb" ^
   BATCH_THROTTLE_MS="1500" ^
   DISABLE_TELEMETRY="1" ^
