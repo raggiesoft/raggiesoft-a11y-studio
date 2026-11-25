@@ -845,13 +845,16 @@ a11y-studio-cli audit ./dist \\
             </ul>
           </div>
           <div>
-            <h3>RaggieSoft Ecosystem</h3>
+            <h3>RaggieSoft Ecosystem &amp; Governance</h3>
             <ul>
               <li><a href="${f(be.githubRepoUrl)}">GitHub Source Repository</a></li>
               <li><a href="https://raggiesoft.com">RaggieSoft Front Door</a></li>
               <li><a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a></li>
               <li><a href="https://jessica.raggiesoft.com">Jessica — Stories Behind the Projects</a></li>
               <li><a href="https://waystation.raggiesoft.com">Global Ecosystem Directory</a></li>
+              <li><a href="https://raggiesoft.com/about/privacy">Privacy Policy</a></li>
+              <li><a href="https://raggiesoft.com/about/terms">Terms of Service</a></li>
+              <li><a href="https://raggiesoft.com/about/ai-disclaimer">AI &amp; Creative Process | RaggieSoft Governance</a></li>
             </ul>
           </div>
         </div>
