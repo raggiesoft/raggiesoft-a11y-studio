@@ -610,7 +610,7 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
           <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
             <ul class="cs-nav-list">
               <li>
-                <a href="/suite" class="cs-nav-link">&larr; Studio Suite</a>
+                <a href="/" class="cs-nav-link">&larr; Studio Suite</a>
               </li>
               ${STUDIO_ROUTES.map(
                 (r) => `
@@ -623,6 +623,9 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
                   >${esc(r.navLabel)}</a>
                 </li>`
               ).join('\n')}
+              <li>
+                <a href="/installer-studio" class="cs-nav-link">Installer Studio</a>
+              </li>
             </ul>
           </nav>
 
@@ -671,8 +674,10 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
           <div>
             <h3>RaggieSoft Studio &amp; Governance</h3>
             <ul>
-              <li><a href="/suite">RaggieSoft Studio Product Family</a></li>
-              <li><a href="/">RaggieSoft Installer Studio (v0.5.0)</a></li>
+              <li><a href="/">RaggieSoft Studio Suite Overview</a></li>
+              <li><a href="/installer-studio">RaggieSoft Installer Studio (v0.5.0)</a></li>
+              <li><a href="/launcher-studio">RaggieSoft Launcher Studio</a></li>
+              <li><a href="/showcase-studio">RaggieSoft Showcase Studio</a></li>
               <li><a href="${esc(STUDIO_ASSETS.githubRepoUrl)}">GitHub Source Repository</a></li>
               <li><a href="https://raggiesoft.com">RaggieSoft Front Door</a></li>
               <li><a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a></li>
