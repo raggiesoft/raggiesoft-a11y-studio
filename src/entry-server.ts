@@ -215,14 +215,14 @@ function renderOverviewPage(): string {
             for managed Windows 11 Pro <code>x64</code> and native <code>ARM64</code> workstations.
           </p>
         </div>
-        <figure style="margin: 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.32); max-width: 64rem;">
+        <figure style="margin: 0 auto; border-radius: 0.75rem; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.32); max-width: 44rem; background: #070d1c;">
           <img
-            src="${esc(STUDIO_ASSETS.ogBanner)}"
+            src="${esc(STUDIO_ASSETS.boxPortraitUrl)}"
             width="1200"
-            height="630"
+            height="960"
             loading="lazy"
             style="display: block; width: 100%; height: auto;"
-            alt="3D boxed software showcase of RaggieSoft Accessibility Studio v1.0.0 — Audit, Diff and Refactor WCAG 2.2 at Source Level."
+            alt="3D boxed software render of RaggieSoft Accessibility Studio v1.0.0 — Audit, Diff and Refactor WCAG 2.2 at Source Level."
           />
         </figure>
       </div>
