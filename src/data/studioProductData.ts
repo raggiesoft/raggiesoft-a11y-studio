@@ -56,7 +56,8 @@ export const STUDIO_MOUNT_PREFIX = '/accessibility-studio';
 
 export const STUDIO_ASSETS = {
   logoSvg: 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg',
-  ogBanner: 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg',
+  ogBanner: 'https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg',
+  boxPortraitUrl: 'https://assets.raggiesoft.com/raggiesoft-studio/boxes/box-accessibility-studio.png',
   githubRepoUrl: 'https://github.com/raggiesoft/accessibility-studio',
   downloadSetupUrl:
     'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe',

@@ -34,7 +34,9 @@ const ssrDir = path.join(projectRoot, '.ssr-temp');
 const SITE_ORIGIN = 'https://raggiesoftstudio.com';
 const MOUNT_PREFIX = '/accessibility-studio';
 const STUDIO_CANONICAL_BASE = `${SITE_ORIGIN}${MOUNT_PREFIX}`;
-const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg';
+const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-studio/boxes/og-accessibility-studio.jpg';
+const OG_IMAGE_ALT =
+  '3D boxed software showcase of RaggieSoft Accessibility Studio v1.0.0 — Enterprise WCAG 2.2 AA and Section 508 Workstation IDE and SARIF 2.1.0 CLI';
 const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg';
 const INDEXNOW_KEY = '726167676965736f6674696e6465786e';
 
@@ -63,6 +65,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         '@id': `${STUDIO_CANONICAL_BASE}#software`,
         name: 'RaggieSoft Accessibility Studio',
         url: STUDIO_CANONICAL_BASE,
+        image: OG_IMAGE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
         softwareVersion: '1.0.0',
@@ -104,16 +107,20 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
     ...(noindex ? [] : [`<link rel="canonical" href="${escapeHtml(canonicalUrl)}" />`]),
     `<link rel="icon" type="image/svg+xml" href="${escapeHtml(FAVICON_SVG)}" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="RaggieSoft Accessibility Studio" />`,
+    `<meta property="og:site_name" content="RaggieSoft Studio" />`,
     `<meta property="og:title" content="${escapeHtml(seoTitle)}" />`,
     `<meta property="og:description" content="${escapeHtml(seoDescription)}" />`,
     `<meta property="og:url" content="${escapeHtml(canonicalUrl)}" />`,
     `<meta property="og:image" content="${escapeHtml(OG_IMAGE)}" />`,
-    `<meta property="og:image:alt" content="RaggieSoft Accessibility Studio — Enterprise WCAG 2.2 AA and Section 508 Web IDE" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${escapeHtml(seoTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(seoDescription)}" />`,
     `<meta name="twitter:image" content="${escapeHtml(OG_IMAGE)}" />`,
+    `<meta name="twitter:image:alt" content="${escapeHtml(OG_IMAGE_ALT)}" />`,
     `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`
   ].join('\n    ');
 }
