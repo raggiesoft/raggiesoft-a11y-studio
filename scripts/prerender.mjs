@@ -31,7 +31,9 @@ const projectRoot = path.resolve(__dirname, '..');
 const distDir = path.join(projectRoot, 'dist');
 const ssrDir = path.join(projectRoot, '.ssr-temp');
 
-const SITE_ORIGIN = 'https://a11y.raggiesoft.com';
+const SITE_ORIGIN = 'https://raggiesoftstudio.com';
+const MOUNT_PREFIX = '/accessibility-studio';
+const STUDIO_CANONICAL_BASE = `${SITE_ORIGIN}${MOUNT_PREFIX}`;
 const OG_IMAGE = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg';
 const FAVICON_SVG = 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg';
 const INDEXNOW_KEY = '726167676965736f6674696e6465786e';
@@ -58,9 +60,9 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
     '@graph': [
       {
         '@type': 'SoftwareApplication',
-        '@id': `${SITE_ORIGIN}/#software`,
+        '@id': `${STUDIO_CANONICAL_BASE}#software`,
         name: 'RaggieSoft Accessibility Studio',
-        url: `${SITE_ORIGIN}/`,
+        url: STUDIO_CANONICAL_BASE,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Windows 11 (x64, ARM64)',
         softwareVersion: '1.0.0',
@@ -81,7 +83,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         '@type': 'WebSite',
         '@id': `${SITE_ORIGIN}/#website`,
         url: `${SITE_ORIGIN}/`,
-        name: 'RaggieSoft Accessibility Studio'
+        name: 'RaggieSoft Studio'
       },
       {
         '@type': 'WebPage',
@@ -90,7 +92,7 @@ function buildSeoHead({ seoTitle, seoDescription, canonicalUrl, noindex = false 
         name: seoTitle,
         description: seoDescription,
         isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
-        about: { '@id': `${SITE_ORIGIN}/#software` }
+        about: { '@id': `${STUDIO_CANONICAL_BASE}#software` }
       }
     ]
   };
@@ -130,7 +132,7 @@ async function main() {
 
   for (const route of STUDIO_ROUTES) {
     const { html } = renderRoute(route.path);
-    const canonicalUrl = route.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${route.path}`;
+    const canonicalUrl = route.path === '/' ? STUDIO_CANONICAL_BASE : `${STUDIO_CANONICAL_BASE}${route.path}`;
     const headMarkup = buildSeoHead({
       seoTitle: route.seoTitle,
       seoDescription: route.seoDescription,
@@ -158,7 +160,7 @@ async function main() {
   const notFoundHead = buildSeoHead({
     seoTitle: '404 Not Found | RaggieSoft Accessibility Studio',
     seoDescription: 'The requested RaggieSoft Accessibility Studio page was not found.',
-    canonicalUrl: `${SITE_ORIGIN}/404`,
+    canonicalUrl: `${STUDIO_CANONICAL_BASE}/404`,
     noindex: true
   });
   const notFoundPage = templateHtml
@@ -172,8 +174,8 @@ async function main() {
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
     ...STUDIO_ROUTES.map((r) => {
-      const loc = r.path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${r.path}`;
-      const priority = r.path === '/' ? '1.0' : '0.8';
+      const loc = r.path === '/' ? STUDIO_CANONICAL_BASE : `${STUDIO_CANONICAL_BASE}${r.path}`;
+      const priority = r.path === '/' ? '0.9' : '0.8';
       return `  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${priority}</priority></url>`;
     }),
     '</urlset>',
@@ -186,7 +188,7 @@ async function main() {
   fs.writeFileSync(path.join(distDir, `${INDEXNOW_KEY}.txt`), `${INDEXNOW_KEY}\n`, 'utf8');
 
   fs.rmSync(ssrDir, { recursive: true, force: true });
-  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} routes + 404.html + sitemap.xml for ${SITE_ORIGIN}`);
+  console.log(`[prerender] Pre-rendered ${STUDIO_ROUTES.length} routes + 404.html + sitemap.xml for ${STUDIO_CANONICAL_BASE}`);
 }
 
 main().catch((err) => {

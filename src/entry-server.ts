@@ -30,10 +30,11 @@ import {
   HERO_KPIS,
   MSI_GPO_PROPERTIES,
   STUDIO_ASSETS,
+  STUDIO_MOUNT_PREFIX,
   STUDIO_ROUTES
 } from './data/studioProductData';
 
-export { STUDIO_ROUTES };
+export { STUDIO_MOUNT_PREFIX, STUDIO_ROUTES };
 
 export type RuleCategoryFilter = 'all' | 'html' | 'css' | 'vtt';
 
@@ -45,9 +46,16 @@ function esc(value: string): string {
     .replace(/>/g, '&gt;');
 }
 
+export function toMountedHref(routePath: string): string {
+  if (!routePath || routePath === '/') return STUDIO_MOUNT_PREFIX;
+  return `${STUDIO_MOUNT_PREFIX}${routePath.startsWith('/') ? routePath : `/${routePath}`}`;
+}
+
 export function normalizeStudioPath(rawPath: string): string {
-  if (!rawPath || rawPath === '/' || rawPath === '/index.html') return '/';
-  const cleaned = rawPath.replace(/\.html$/i, '').replace(/\/+$/, '');
+  if (!rawPath) return '/';
+  const stripped = rawPath.replace(/^\/accessibility-studio(?=\/|$)/i, '') || '/';
+  if (stripped === '/' || stripped === '/index.html') return '/';
+  const cleaned = stripped.replace(/\.html$/i, '').replace(/\/+$/, '');
   return STUDIO_ROUTES.some((r) => r.path === cleaned) ? cleaned : '/404';
 }
 
@@ -129,14 +137,14 @@ function renderOverviewPage(): string {
             DOM emulation, and OASIS SARIF 2.1.0 reporting.
           </p>
           <div class="cs-btn-row">
-            <a href="${esc(STUDIO_ASSETS.githubRepoUrl)}" class="cs-btn cs-btn-primary">
-              <span>View Open-Source Repository (MIT)</span><span aria-hidden="true">→</span>
+            <a href="${esc(STUDIO_ASSETS.downloadSetupUrl)}" class="cs-btn cs-btn-primary">
+              <span>Download Signed v1.0.0 Setup.exe (Auto-Detects CPU)</span><span aria-hidden="true">→</span>
             </a>
-            <a href="/enterprise" data-local-nav="true" class="cs-btn cs-btn-secondary">
+            <a href="${esc(toMountedHref('/enterprise'))}" data-local-nav="true" class="cs-btn cs-btn-secondary">
               <span>Enterprise MSI &amp; GPO Specs</span><span aria-hidden="true">→</span>
             </a>
-            <a href="/reports" data-local-nav="true" class="cs-btn cs-btn-ghost">
-              <span>Inspect Sample Reports</span>
+            <a href="${esc(STUDIO_ASSETS.githubRepoUrl)}" class="cs-btn cs-btn-ghost">
+              <span>Open-Source Repository (MIT)</span>
             </a>
           </div>
         </div>
@@ -423,7 +431,7 @@ function renderReportsPage(): string {
       "tool": {
         "driver": {
           "name": "RaggieSoft Accessibility Studio",
-          "informationUri": "https://a11y.raggiesoft.com",
+          "informationUri": "https://raggiesoftstudio.com/accessibility-studio",
           "version": "1.0.0"
         }
       },
@@ -534,8 +542,8 @@ function renderNotFoundPage(): string {
           Return to the RaggieSoft Accessibility Studio product overview or browse the global RaggieSoft directory.
         </p>
         <div class="cs-btn-row">
-          <a href="/" data-local-nav="true" class="cs-btn cs-btn-primary">Return to Product Overview →</a>
-          <a href="https://waystation.raggiesoft.com" class="cs-btn cs-btn-ghost">Open RaggieSoft Global Directory</a>
+          <a href="${esc(toMountedHref('/'))}" data-local-nav="true" class="cs-btn cs-btn-primary">Return to Accessibility Studio →</a>
+          <a href="/" class="cs-btn cs-btn-ghost">Open RaggieSoft Studio Suite Hub</a>
         </div>
       </div>
     </section>`;
@@ -569,10 +577,10 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
   const shellHtml = `
     <header class="cs-shell-header">
       <div class="cs-shell-inner">
-        <a href="/" data-local-nav="true" class="cs-brand">
+        <a href="${esc(toMountedHref('/'))}" data-local-nav="true" class="cs-brand">
           <img src="${esc(STUDIO_ASSETS.logoSvg)}" alt="" width="24" height="24" />
           <span>
-            <span class="cs-brand-prefix">RaggieSoft</span>
+            <span class="cs-brand-prefix">RaggieSoft Studio •</span>
             <span class="cs-brand-product">Accessibility Studio</span>
           </span>
         </a>
@@ -601,11 +609,14 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
         <div id="header-navigation-panel" class="cs-nav-panel" data-rs-collapsible="true">
           <nav aria-label="RaggieSoft Accessibility Studio Product Navigation">
             <ul class="cs-nav-list">
+              <li>
+                <a href="/suite" class="cs-nav-link">&larr; Studio Suite</a>
+              </li>
               ${STUDIO_ROUTES.map(
                 (r) => `
                 <li>
                   <a
-                    href="${esc(r.path)}"
+                    href="${esc(toMountedHref(r.path))}"
                     data-local-nav="true"
                     class="cs-nav-link"
                     ${r.path === normalizedPath ? 'aria-current="page"' : ''}
@@ -650,20 +661,21 @@ export function renderRoute(rawPath: string): { html: string; normalizedPath: st
           <div>
             <h3>Product Documentation</h3>
             <ul>
-              <li><a href="/" data-local-nav="true">Product Overview</a></li>
-              <li><a href="/features" data-local-nav="true">IDE &amp; Guided Diffs</a></li>
-              <li><a href="/enterprise" data-local-nav="true">Enterprise MSI, GPO &amp; CLI</a></li>
-              <li><a href="/reports" data-local-nav="true">Sample WCAG &amp; SARIF Reports</a></li>
-              <li><a href="/docs" data-local-nav="true">Rule Catalog &amp; Exit Codes</a></li>
+              <li><a href="${esc(toMountedHref('/'))}" data-local-nav="true">Product Overview</a></li>
+              <li><a href="${esc(toMountedHref('/features'))}" data-local-nav="true">IDE &amp; Guided Diffs</a></li>
+              <li><a href="${esc(toMountedHref('/enterprise'))}" data-local-nav="true">Enterprise MSI, GPO &amp; CLI</a></li>
+              <li><a href="${esc(toMountedHref('/reports'))}" data-local-nav="true">Sample WCAG &amp; SARIF Reports</a></li>
+              <li><a href="${esc(toMountedHref('/docs'))}" data-local-nav="true">Rule Catalog &amp; Exit Codes</a></li>
             </ul>
           </div>
           <div>
-            <h3>RaggieSoft Ecosystem &amp; Governance</h3>
+            <h3>RaggieSoft Studio &amp; Governance</h3>
             <ul>
+              <li><a href="/suite">RaggieSoft Studio Product Family</a></li>
+              <li><a href="/">RaggieSoft Installer Studio (v0.5.0)</a></li>
               <li><a href="${esc(STUDIO_ASSETS.githubRepoUrl)}">GitHub Source Repository</a></li>
               <li><a href="https://raggiesoft.com">RaggieSoft Front Door</a></li>
               <li><a href="https://launcher.raggiesoft.com">RaggieSoft Launcher</a></li>
-              <li><a href="https://jessica.raggiesoft.com">Jessica — Stories Behind the Projects</a></li>
               <li><a href="https://waystation.raggiesoft.com">Global Ecosystem Directory</a></li>
               <li><a href="https://raggiesoft.com/about/privacy">Privacy Policy</a></li>
               <li><a href="https://raggiesoft.com/about/terms">Terms of Service</a></li>

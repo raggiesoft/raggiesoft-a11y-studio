@@ -52,10 +52,16 @@ export interface MsiPropertySpec {
   description: string;
 }
 
+export const STUDIO_MOUNT_PREFIX = '/accessibility-studio';
+
 export const STUDIO_ASSETS = {
   logoSvg: 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/studio-logo.svg',
   ogBanner: 'https://assets.raggiesoft.com/raggiesoft-a11y-studio/images/og-a11y-studio.jpg',
-  githubRepoUrl: 'https://github.com/raggiesoft/accessibility-studio'
+  githubRepoUrl: 'https://github.com/raggiesoft/accessibility-studio',
+  downloadSetupUrl:
+    'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-setup.exe',
+  downloadOfflineUrl:
+    'https://assets.raggiesoft.com/desktop-apps/windows/apps/accessibility-studio/raggiesoft-accessibility-studio-offline-setup.exe'
 } as const;
 
 export const STUDIO_ROUTES: readonly StudioRouteMeta[] = [

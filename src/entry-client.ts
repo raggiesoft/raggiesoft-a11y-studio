@@ -26,6 +26,7 @@ import {
   normalizeStudioPath,
   renderRoute,
   renderRuleCatalogTableHtml,
+  toMountedHref,
   type RuleCategoryFilter
 } from './entry-server';
 
@@ -138,7 +139,7 @@ function navigateClient(targetPath: string, pushState: boolean): void {
   appHost.innerHTML = html;
 
   if (pushState) {
-    window.history.pushState({}, '', normalizedPath);
+    window.history.pushState({}, '', toMountedHref(normalizedPath));
   }
 
   const routeMeta = STUDIO_ROUTES.find((r) => r.path === normalizedPath);

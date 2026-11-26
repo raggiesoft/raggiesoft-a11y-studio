@@ -2,13 +2,14 @@
  * @license MIT
  * ============================================================================
  * vite.config.ts — Vite Bundler & Sass Token Compiler for Accessibility Studio
- * Property: https://a11y.raggiesoft.com (raggiesoft-a11y-studio)
+ * Property: https://raggiesoftstudio.com/accessibility-studio (301 from a11y.raggiesoft.com)
  * ============================================================================
  * PLAIN-ENGLISH OVERVIEW (100-LEVEL VITE CONFIGURATION GUIDE):
  *   What is this file?
  *     Configures Vite 6 to bundle our TypeScript modules, IBM Carbon Design
  *     System Web Components (`@carbon/web-components`), and Carbon Sass design
- *     tokens (`@carbon/styles`) into content-hashed static files inside `dist/`.
+ *     tokens (`@carbon/styles`) into content-hashed static files inside `dist/`
+ *     mounted at `/accessibility-studio/` under `https://raggiesoftstudio.com`.
  *
  *   Why `preprocessorOptions.scss.quietDeps: true`?
  *     `@carbon/styles` ships upstream Sass modules inside `node_modules/`.
@@ -20,8 +21,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Emit root-relative `/assets/*` paths for `https://a11y.raggiesoft.com`
-  base: '/',
+  // Emit `/accessibility-studio/assets/*` paths for `https://raggiesoftstudio.com/accessibility-studio`
+  base: '/accessibility-studio/',
   css: {
     preprocessorOptions: {
       scss: {
