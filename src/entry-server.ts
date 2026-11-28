@@ -89,29 +89,29 @@ export function renderRuleCatalogTableHtml(
 
   return `
     <div class="cs-table-region" tabindex="0" role="region" aria-labelledby="rules-table-caption">
-      <table class="cs-table">
+      <table class="cs-table" role="table">
         <caption id="rules-table-caption">
           Showing ${filtered.length} source-level WCAG 2.2 &amp; Revised Section 508 Web rules
         </caption>
-        <thead>
-          <tr>
-            <th scope="col">Rule ID</th>
-            <th scope="col">Severity</th>
-            <th scope="col">WCAG 2.2 / Section 508</th>
-            <th scope="col">Assisted Guided Fix</th>
-            <th scope="col">Engineering Verification</th>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">Rule ID</th>
+            <th scope="col" role="columnheader">Severity</th>
+            <th scope="col" role="columnheader">WCAG 2.2 / Section 508</th>
+            <th scope="col" role="columnheader">Assisted Guided Fix</th>
+            <th scope="col" role="columnheader">Engineering Verification</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody role="rowgroup">
           ${filtered
             .map(
               (r) => `
-            <tr id="rule-${esc(r.ruleId)}">
-              <th scope="row"><code class="cs-mono">${esc(r.ruleId)}</code></th>
-              <td><strong>${esc(r.severity)}</strong></td>
-              <td>${esc(r.wcag)}<br /><small>${esc(r.section508)}</small></td>
-              <td>${esc(r.guidedFix)}</td>
-              <td>${esc(r.summary)}</td>
+            <tr id="rule-${esc(r.ruleId)}" role="row">
+              <th scope="row" role="rowheader"><code class="cs-mono">${esc(r.ruleId)}</code></th>
+              <td role="cell" data-label="Severity"><strong>${esc(r.severity)}</strong></td>
+              <td role="cell" data-label="WCAG 2.2 / Section 508">${esc(r.wcag)}<br /><small>${esc(r.section508)}</small></td>
+              <td role="cell" data-label="Assisted Guided Fix">${esc(r.guidedFix)}</td>
+              <td role="cell" data-label="Engineering Verification">${esc(r.summary)}</td>
             </tr>`
             )
             .join('\n')}
@@ -357,24 +357,24 @@ function renderEnterprisePage(): string {
   ADD_CLI_TO_PATH="1"</code></pre>
 
         <div style="margin-top: 1.5rem;" class="cs-table-region" tabindex="0" role="region" aria-labelledby="msi-table-caption">
-          <table class="cs-table">
+          <table class="cs-table" role="table">
             <caption id="msi-table-caption">Public Windows Installer (MSI) &amp; Group Policy Registry Matrix</caption>
-            <thead>
-              <tr>
-                <th scope="col">Public MSI Property</th>
-                <th scope="col">Default Value</th>
-                <th scope="col">Windows Policy Registry Path</th>
-                <th scope="col">Enterprise Behavior</th>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th scope="col" role="columnheader">Public MSI Property</th>
+                <th scope="col" role="columnheader">Default Value</th>
+                <th scope="col" role="columnheader">Windows Policy Registry Path</th>
+                <th scope="col" role="columnheader">Enterprise Behavior</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody role="rowgroup">
               ${MSI_GPO_PROPERTIES.map(
                 (row) => `
-                <tr>
-                  <th scope="row"><code class="cs-mono">${esc(row.property)}</code></th>
-                  <td><code class="cs-mono">${esc(row.defaultValue)}</code></td>
-                  <td><code class="cs-mono">${esc(row.registryTarget)}</code></td>
-                  <td>${esc(row.description)}</td>
+                <tr role="row">
+                  <th scope="row" role="rowheader"><code class="cs-mono">${esc(row.property)}</code></th>
+                  <td role="cell" data-label="Default Value"><code class="cs-mono">${esc(row.defaultValue)}</code></td>
+                  <td role="cell" data-label="Windows Policy Registry Path"><code class="cs-mono">${esc(row.registryTarget)}</code></td>
+                  <td role="cell" data-label="Enterprise Behavior">${esc(row.description)}</td>
                 </tr>`
               ).join('\n')}
             </tbody>

@@ -643,6 +643,84 @@ cds-tile.cs-tile p {
   letter-spacing: 0.05em;
 }
 
+/* Carbon Mobile Stacked Data-Table Cards (`< 768px` — Zero Horizontal Scroll) */
+@media (max-width: 767.98px) {
+  .cs-table-region {
+    overflow-x: visible;
+    border: 0;
+    background: transparent;
+  }
+
+  .cs-table,
+  .cs-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .cs-table caption {
+    display: block;
+    background: var(--cs-surface-elevated);
+    border: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+    margin-bottom: 0.75rem;
+  }
+
+  .cs-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .cs-table tbody tr {
+    display: block;
+    background: var(--cs-surface-elevated);
+    border: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+    border-left: 3px solid var(--cds-interactive, #0f62fe);
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .cs-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .cs-table tbody th[scope='row'] {
+    display: block;
+    padding: 0 0 0.5rem;
+    margin-bottom: 0.45rem;
+    border-bottom: 1px solid var(--cds-border-subtle-01, #e0e0e0);
+    font-size: 0.96rem;
+    overflow-wrap: anywhere;
+  }
+
+  .cs-table tbody td {
+    display: block;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--cds-border-subtle-01, #e0e0e0);
+    overflow-wrap: anywhere;
+  }
+
+  .cs-table tbody td:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .cs-table tbody td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--cds-text-secondary, #525252);
+    margin-bottom: 0.16rem;
+  }
+}
+
 /* 11. Interactive Rule Filter Bar & Terminal Code Blocks */
 .cs-filter-bar {
   display: flex;
